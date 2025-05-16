@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -10,7 +10,6 @@ import { Product } from '../types';
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet,
     NavbarComponent,
     SidebarComponent,
     CardComponent,
@@ -22,13 +21,11 @@ import { Product } from '../types';
 })
 export class AppComponent implements OnInit{
   constructor(private productService: ProductService) {}
-  products: Product[] = [];
+  products = signal<Product[]>([])
 
   ngOnInit() {
     this.productService.getProducts().subscribe((res: any) => {
-      this.products = res.data;
-      console.log(res, 'products');
-      
+      this.products.set(res.data)
     })
   }
 }
