@@ -1,0 +1,19 @@
+
+
+<app-navbar></app-navbar>
+
+<main class="px-5 sm:px-10 md:px-15 lg:px-20 mb-14">
+  <h1 class="text-2xl py-5">My Profile</h1>
+  <section class="flex gap-10 flex-col sm:flex-row">
+    <div>
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 flex-3/4">
+      @for(pdt of products; track pdt.id) {
+        <app-card [product]="pdt"></app-card>
+      }
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>
