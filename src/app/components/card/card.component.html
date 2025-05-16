@@ -1,7 +1,24 @@
 <div class="flex flex-col gap-3">
-    <div class="bg-gray-100 flex justify-center py-3">
-        <img style="height: 250px;" class="mix-blend-darken" [src]="product.image" [alt]="product.product_name">
+    <div class="bg-gray-100 flex justify-center py-3 relative group">
+        <img
+            style="height: 250px;"
+            class="mix-blend-darken transition-transform duration-300 group-hover:scale-105"
+            [src]="product.image"
+            [alt]="product.product_name"
+        />
+
+        <button
+            class="absolute bottom-4 right-4 left-4 bg-white text-gray-900 px-4 py-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+        >
+            Move to Cart
+        </button>
+        <div class="flex items-center justify-center absolute top-4 right-4 bg-white text-red-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <button class="cursor-pointer" style="width: 50px; height: 50px;">
+                <i class="material-icons">delete</i>
+            </button>
+        </div>
     </div>
+
     <div>
         <p class="font-bold">{{ product.category_name ?? 'Allen Solly' }}</p>
         <p>{{ product.product_name }}</p>
